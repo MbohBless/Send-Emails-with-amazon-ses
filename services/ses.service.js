@@ -1,7 +1,7 @@
 const sesClient = require('./sesclient.service')
 const { SendEmailCommand, SendTemplatedEmailCommand } = require('@aws-sdk/client-ses')
 
-export const sesService = {
+const sesService = {
     sendEmail: async (to, from, subject, body) => {
         const params = {
             Destination: {
@@ -44,4 +44,8 @@ export const sesService = {
             throw err
         }
     }
+}
+
+module.exports = {
+    sesService
 }
