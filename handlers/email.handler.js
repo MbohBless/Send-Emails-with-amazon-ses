@@ -27,43 +27,43 @@ const emailHandler = {
                 username: "Mboh Bless Pearl",
                 company_name: "Twitter",
                 data: [
-                    [
-                        {
-                            "id": 1,
-                            "product": "Iphone 12",
-                            "quantity": 10,
-                            "totalAmount": 100000,
-                            "date": "10/01/2021"
-                        },
-                        {
-                            "id": 2,
-                            "product": "Samsung Galaxy S21",
-                            "quantity": 5,
-                            "totalAmount": 75000,
-                            "date": "12/05/2021"
-                        },
-                        {
-                            "id": 3,
-                            "product": "Google Pixel 5",
-                            "quantity": 8,
-                            "totalAmount": 80000,
-                            "date": "08/20/2021"
-                        },
-                        {
-                            "id": 4,
-                            "product": "Sony PlayStation 5",
-                            "quantity": 2,
-                            "totalAmount": 100000,
-                            "date": "09/15/2021"
-                        },
-                        {
-                            "id": 5,
-                            "product": "MacBook Pro",
-                            "quantity": 3,
-                            "totalAmount": 180000,
-                            "date": "11/28/2021"
-                        }
-                    ]
+
+                    {
+                        "id": 1,
+                        "product": "Iphone 12",
+                        "quantity": 10,
+                        "totalAmount": 100000,
+                        "date": "10/01/2021"
+                    },
+                    {
+                        "id": 2,
+                        "product": "Samsung Galaxy S21",
+                        "quantity": 5,
+                        "totalAmount": 75000,
+                        "date": "12/05/2021"
+                    },
+                    {
+                        "id": 3,
+                        "product": "Google Pixel 5",
+                        "quantity": 8,
+                        "totalAmount": 80000,
+                        "date": "08/20/2021"
+                    },
+                    {
+                        "id": 4,
+                        "product": "Sony PlayStation 5",
+                        "quantity": 2,
+                        "totalAmount": 100000,
+                        "date": "09/15/2021"
+                    },
+                    {
+                        "id": 5,
+                        "product": "MacBook Pro",
+                        "quantity": 3,
+                        "totalAmount": 180000,
+                        "date": "11/28/2021"
+                    }
+
                 ]
             }
 
