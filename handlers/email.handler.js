@@ -4,17 +4,16 @@ const emailHandler = {
     sendEmail: async (req, res) => {
         const { to, subject, body } = req.body;
         try {
-            await sesService.sendEmail(to, "mbohblesspearl@gmail.com", subject, body);
+            await sesService.sendEmail([to], "mbohblesspearl@gmail.com", subject, body);
             res.status(200).send({ message: 'Email sent successfully' });
         } catch (err) {
             res.status(500).send({ message: 'Error sending email' });
         }
     },
     sendTemplateEmail: async (req, res) => {
-        const { to, templatename } = req.body;
-        const lowerCaseTemplateName = templatename.toLowerCase();
-        let templateData = {}
-
+        const { to, templateName } = req.body;
+        const lowerCaseTemplateName = templateName.toLowerCase();
+        let templateData;
         if (lowerCaseTemplateName === "welcome") {
             templateData = {
                 company_logo: "https://www.edigitalagency.com.au/wp-content/uploads/twitter-logo-black-png.png",
@@ -122,12 +121,13 @@ const emailHandler = {
             }
         }
         else {
-            res.status(404).send({ message: "Template not found" })
+            return res.status(404).send({ message: "Template not found" })
         }
         try {
-            await sesService.sendTemplatedEmail(to, "mbohblesspearl@gmail.com", lowerCaseTemplateName, templateData);
+            await sesService.sendTemplatedEmail([to], "mbohblesspearl@gmail.com", lowerCaseTemplateName, templateData);
         }
         catch (err) {
+            console.log(err)
         }
     },
     generateTemplate: async (req, res) => {

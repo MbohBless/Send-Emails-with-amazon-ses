@@ -20,7 +20,6 @@ const templateService = {
                     console.log(`Template ${templateName} does not exist`);
                 } else {
                     console.log(`Error getting template ${templateName}`, err);
-                    // throw err;
                 }
             }
         }));

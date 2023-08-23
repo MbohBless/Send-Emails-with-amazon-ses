@@ -10,8 +10,8 @@ var usersRouter = require('./routes/users');
 var emailRouter = require('./routes/emailservice.routes');
 
 var app = express();
-dotenv.config();
 
+dotenv.config();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -41,5 +41,11 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen('3000', () => {
+  console.log('Server started on port 3000');
+});
+
+
 
 module.exports = app;
