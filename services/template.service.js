@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { sesClient } = require('./sesclient.service');
-const { CreateTemplateCommand, GetTemplateCommand, DeleteTemplateCommand } = require('@aws-sdk/client-ses');
+const { CreateTemplateCommand, GetTemplateCommand, DeleteTemplateCommand, ListTemplatesCommand } = require('@aws-sdk/client-ses');
 
 export const templateService = {
     uploadTemplates: async () => {
@@ -53,8 +53,6 @@ export const templateService = {
             const data = await sesClient.send(new GetTemplateCommand(params));
             return data.Template;
         } catch (err) {
-            console.log(`Error getting template ${templateName}`, err);
-            // throw an error
             throw err;
         }
     },
@@ -72,4 +70,29 @@ export const templateService = {
 
         }
     },
+    getAllTemplates: async (itemCount) => {
+        const params = {
+            MaxItems: itemCount
+        };
+        try {
+            const data = await sesClient.send(new ListTemplatesCommand(params));
+            return data.TemplatesMetadata;
+        }
+        catch (err) {
+            console.log(`Error getting templates`, err);
+            throw err;
+        }
+    },
+    deleteAllTemplates: async () => {
+        const templates = fs.readdirSync(path.join(__dirname, 'public', 'templates'));
+        await Promise.all(templates.map(async (template) => {
+            const templateName = template.split('.')[0];
+            try {
+                await templateService.deleteTemplate(templateName);
+            } catch (err) {
+                console.log(`Error deleting template ${templateName}`, err);
+                throw err;
+            }
+        }));
+    }
 }

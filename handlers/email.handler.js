@@ -138,5 +138,26 @@ export const emailHandler = {
         } catch (err) {
             res.status(500).send({ message: 'Error generating templates' });
         }
+    },
+    getTemplate: async (req, res) => {
+        const { templateName } = req.body
+        if (templateName === "all") {
+            try {
+                const data = await templateService.getAllTemplates();
+                res.status(200).send({ message: 'Templates retrieved successfully', data: data });
+            } catch (err) {
+                res.status(500).send({ message: 'Error retrieving templates' });
+            }
+
+        }
+        else {
+            const trimmedTemplateName = templateName.trim();
+            if (trimmedTemplateName) {
+                templateService.getTemplate(trimmedTemplateName)
+            } else {
+                res.status(400).send({ message: "Invalid template name" });
+            }
+
+        }
     }
 }
