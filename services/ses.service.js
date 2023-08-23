@@ -5,7 +5,7 @@ export const sesService = {
     sendEmail: async (to, from, subject, body) => {
         const params = {
             Destination: {
-                ToAddresses: [to]
+                ToAddresses: to
             },
             Message: {
                 Body: {
@@ -30,7 +30,7 @@ export const sesService = {
     sendTemplatedEmail: async (to, from, templateName, templateData) => {
         const params = {
             Destination: {
-                ToAddresses: [to]
+                ToAddresses: to
             },
             Source: from,
             Template: templateName,
