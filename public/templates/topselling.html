@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Top Selling Products</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f5f5f5; margin: 0; padding: 0;">
+
+    <!-- Header with logo -->
+
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+
+        <tr>
+            <td align="center" bgcolor="#ffffff" style="padding: 40px 0;">
+                <img src="{{company_logo}}" alt="Company Logo" width="150">
+            </td>
+        </tr>
+
+        <!-- Email content -->
+
+
+        <tr>
+            <td bgcolor="#ffffff" style="padding: 40px 20px;">
+                <h1>Top Selling Products</h1>
+
+                <p>Dear {{customer_name}},</p>
+
+                <p>Here are our current top selling products:</p>
+
+                <!-- Product grid -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    {{#each top_products}}
+                    <tr>
+                        <td width="25%" align="center">
+                            <img src="{{this.image}}" width="150">
+                            <p>{{this.product}}</p>
+                            <p>Total Sold: {{this.total_sold}}</p>
+                        </td>
+                    </tr>
+                    {{/each}}
+
+                </table>
+
+                <p>These are our most popular items right now. Let us know if you have any other questions!</p>
+
+                <p>Thank you,</p>
+                <p>The {{company_name}} Team</p>
+
+            </td>
+        </tr>
+
+        <!-- Email footer -->
+
+        <tr>
+            <td bgcolor="#ffffff" style="padding: 20px 20px;">
+                <p style="font-size: 12px; color: #777;">This email contains our current top selling products. Contact
+                    us if you have any questions.</p>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

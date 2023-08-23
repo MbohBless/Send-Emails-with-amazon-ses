@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Spotlight</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f5f5f5; margin: 0; padding: 0;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+        <tr>
+            <td align="center" bgcolor="#ffffff" style="padding: 40px 0;">
+                <img src="{{company_logo}}" alt="Company Logo" width="150">
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#ffffff" style="padding: 40px 20px;">
+                <h1>Product Spotlight: {{product_name}}</h1>
+                <p>Dear {{fullname}},</p>
+                <p>We're excited to introduce our featured product of the month: [Product Name]!</p>
+                <img src="{{product_image}}" alt="{{product_name}}" width="300" style="margin: 20px 0;">
+                <p>{{product_decription}}</p>
+                <p>Key Features:</p>
+                <ul>
+                    <li>{{feature_one}}</li>
+                    <li>{{feature_two}}</li>
+                    <li>{{feature_3}}</li>
+                </ul>
+                <p>Discover more about [Product Name] and how it can enhance your experience with us.</p>
+                <div style="text-align: center;">
+                    <a href="{{product_url}}"
+                        style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Learn
+                        More</a>
+                </div>
+                <p>Feel free to reach out to us if you have any questions or would like to know more about this product.
+                </p>
+                <p>Best regards,</p>
+                <p>The {{company_name}} Team</p>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#ffffff" style="padding: 20px 20px;">
+                <p style="font-size: 12px; color: #777;">You received this email because you are a valued customer of
+                    {{company_name}}. If you no longer wish to receive product spotlight emails, you can unsubscribe
+                    from our mailing list.</p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
