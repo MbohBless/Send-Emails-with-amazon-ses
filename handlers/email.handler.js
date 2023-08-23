@@ -1,4 +1,5 @@
 const { sesService } = require('../services/ses.service');
+const { templateService } = require('../services/template.service');
 export const emailHandler = {
     sendEmail: async (req, res) => {
         const { to, subject, body } = req.body;
@@ -128,11 +129,14 @@ export const emailHandler = {
         }
         catch (err) {
         }
-
-
-
-
-
-
+    },
+    generateTemplate: async (req, res) => {
+        try {
+            console.log("Generating templates");
+            const data = await templateService.uploadTemplates();
+            res.status(200).send({ message: 'Templates generated successfully', data: data });
+        } catch (err) {
+            res.status(500).send({ message: 'Error generating templates' });
+        }
     }
 }

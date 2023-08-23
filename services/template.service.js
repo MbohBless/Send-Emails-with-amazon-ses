@@ -6,6 +6,25 @@ const { CreateTemplateCommand, GetTemplateCommand, DeleteTemplateCommand } = req
 export const templateService = {
     uploadTemplates: async () => {
         const templates = fs.readdirSync(path.join(__dirname, 'public', 'templates'));
+        // use the map function to map through each template and check to see that the templates do not exist
+        await Promise.all(templatePromises.map(async (template) => {
+            const templateName = template.split('.')[0];
+            try {
+                const template = await templateService.getTemplate(templateName);
+                console.log(`Template ${template} already exists`);
+                if (template) {
+                    templates = templates.filter((template) => template !== templateName);
+                }
+            } catch (err) {
+                if (err.name === 'TemplateDoesNotExist') {
+                    console.log(`Template ${templateName} does not exist`);
+                } else {
+                    console.log(`Error getting template ${templateName}`, err);
+                    throw err;
+                }
+            }
+        }));
+
         const templatePromises = templates.map(async (template) => {
             const templateName = template.split('.')[0];
             const templateContent = fs.readFileSync(path.join(__dirname, 'public', 'templates', `${templateName}`), 'utf8');
@@ -24,7 +43,7 @@ export const templateService = {
                 throw err;
             }
         });
-        await Promise.all(templatePromises);
+        return await Promise.all(templatePromises);
     },
     getTemplate: async (templateName) => {
         const params = {
