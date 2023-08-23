@@ -125,6 +125,7 @@ const emailHandler = {
         }
         try {
             await sesService.sendTemplatedEmail([to], "mbohblesspearl@gmail.com", lowerCaseTemplateName, templateData);
+            res.status(200).send({ message: 'Email sent successfully' });
         }
         catch (err) {
             console.log(err)
@@ -141,8 +142,8 @@ const emailHandler = {
         }
     },
     getTemplate: async (req, res) => {
-        const { templateName } = req.body
-        if (templateName === "all") {
+        const { tempName } = req.params
+        if (tempName === "all") {
             try {
                 const data = await templateService.getAllTemplates(10);
                 res.status(200).send({ message: 'Templates retrieved successfully', data: data });
@@ -151,10 +152,14 @@ const emailHandler = {
             }
         }
         else {
-            const trimmedTemplateName = templateName.trim();
+            const trimmedTemplateName = tempName.trim();
             if (trimmedTemplateName) {
                 try {
-                    await templateService.getTemplate(trimmedTemplateName)
+                    const data = await templateService.getTemplate(trimmedTemplateName)
+                    res.status(200).send({
+                        data: data,
+                        message: "Fetched the document"
+                    })
                 }
                 catch (err) {
                     res.status(404).send({ message: "Template not found" });
@@ -163,22 +168,20 @@ const emailHandler = {
             } else {
                 res.status(400).send({ message: "Invalid template name" });
             }
-
         }
     },
     deleteTemplate: async (req, res) => {
-        const { templateName } = req.body
-        if (templateName === "all") {
+        const { tempName } = req.params
+        if (tempName === "all") {
             try {
                 const data = await templateService.deleteAllTemplates();
                 res.status(200).send({ message: 'Templates deleted successfully', data: data });
             } catch (err) {
                 res.status(500).send({ message: 'Error deleting templates' });
             }
-
         }
         else {
-            const trimmedTemplateName = templateName.trim();
+            const trimmedTemplateName = tempName.trim();
             if (trimmedTemplateName) {
                 try {
                     await templateService.deleteTemplate(trimmedTemplateName)

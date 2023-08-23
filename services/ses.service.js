@@ -10,9 +10,10 @@ const sesService = {
             },
             Message: {
                 Body: {
-                    Text: {
-                        Data: body
-                    }
+                    Html: {
+                        Charset: "UTF-8",
+                        Data: body,
+                    },
                 },
                 Subject: {
                     Data: subject
@@ -43,7 +44,7 @@ const sesService = {
             const template = await templateService.getTemplate(templateName)
             const compiledTemplate = HandleBars.compile(template.HtmlPart)
             const htmlData = compiledTemplate(templateData)
-            sesService.sendEmail(to, from, template.SubjectPart, htmlData)
+            sesService.sendEmail(to, from, '', htmlData)
 
         } catch (err) {
             console.log(`Error sending email`, err)
