@@ -90,7 +90,7 @@ Now that you have successfully installed and set up the application, you can use
 - **Example Response**: HTTP status code indicating success or failure.
 
 ## Contributing
-Contributions to this project are welcome! If you have ideas for improvements or new features, please open an issue or submit a pull request and if you wish get to me on just lazy working when no one shows their interest in my ideas `mbohblesspearl@gmail.com` 😁😁😁.
+Contributions to this project are welcome! If you have ideas for improvements or new features, please open an issue or submit a pull request and if you wish get to me on just do I am lazy working when no one shows their interest in my ideas Email: `mbohblesspearl@gmail.com` 😁😁😁.
 
 
 
