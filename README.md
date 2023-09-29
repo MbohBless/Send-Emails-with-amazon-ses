@@ -22,14 +22,17 @@ Before using this application, make sure you have the following prerequisites:
 
 - **Node.js**: Install Node.js from [nodejs.org](https://nodejs.org/).
 
-- **AWS SES Credentials**: Obtain AWS SES credentials (Access Key ID and Secret Access Key) by setting up an AWS account and SES service. Ensure that your AWS credentials are correctly configured on your local machine.
+- **AWS SES Credentials**: Obtain AWS SES credentials (Access Key ID and Secret Access Key) by setting up an AWS account and SES service. Ensure that your AWS credentials are correctly configured on your local machine. in the env file for security
 
 
 1. Clone this repository to your local machine:
 
    ```shell
-   git clone https://github.com/your-username/aws-ses-email-app.git
+   https://github.com/MbohBless/Send-Emails-with-amazon-ses.git
+   next
    npm install
+   next
+   npm start 
    ```
 # Usage
 Now that you have successfully installed and set up the application, you can use it for sending emails, managing templates, and more. Here are some common usage scenarios:
